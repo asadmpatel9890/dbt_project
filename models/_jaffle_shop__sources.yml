@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    description: a clone of postgres application database
+    database: raw
+    freshness:
+    schema: jaffle_shop
+    tables:
+      - name: orders
+        columns:
+          - name: order_id
+            description: this is primary key of orders table
+            tests:
+              - unique
+              - not_null
+        freshness:
+          warn_after:
+            count: 3
+            period: day
+          error_after:
+            count: 4
+            period: day
+        loaded_at_field: _etl_loaded_at
+      - name: customers
+        description: this is raw customer data
+  - name: stripe
+    tables:
+      - name: payments

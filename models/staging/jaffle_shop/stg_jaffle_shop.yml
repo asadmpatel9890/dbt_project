@@ -1,0 +1,21 @@
+version: 2
+
+models:
+    - name: stg_jaffle_shop__customer
+      columns: 
+        - name: customer_id
+          description: primary_key
+          tests:
+              - unique
+              - not_null
+    - name: stg_jaffle_shop__orders
+      columns:
+        - name: order_id
+          tests:
+            - not_null
+            - unique
+        - name: status
+          description: "{{ doc('order_status')}}"
+          tests:
+            - accepted_values:
+                values: ['shipped','completed','return_pending','returned','placed']
