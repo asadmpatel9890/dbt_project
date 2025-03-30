@@ -7,13 +7,13 @@
 with customers as (
 
     select * 
-    from {{ref('stg_jaffle_shop_customer')}}
+    from {{ref('stg_jaffle_shop__customer')}}
 ),
 
 orders as (
 
     select *
-    from {{ref("stg_jaffle_shop_orders")}}
+    from {{ref("stg_jaffle_shop__orders")}}
 
 ),
 

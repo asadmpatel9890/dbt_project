@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    database: raw
+    freshness:
+    schema: jaffle_shop
+    tables:
+      - name: orders
+        columns:
+          - name: order_id
+            tests:
+              - unique
+              - not_null
+        freshness:
+          warn_after:
+            count: 3
+            period: day
+          error_after:
+            count: 4
+            period: day
+        loaded_at_field: _etl_loaded_at
+      - name: customers
+  - name: stripe
+    tables:
+      - name: payments
