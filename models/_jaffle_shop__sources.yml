@@ -25,5 +25,6 @@ sources:
       - name: customers
         description: this is raw customer data
   - name: stripe
+    database: raw
     tables:
-      - name: payments
+      - name: payment
